@@ -6,7 +6,6 @@
     { "source": "/videobackground.mp4", "destination": "/public/videobackground.mp4" },
     { "source": "/phonebackground.mp4", "destination": "/public/phonebackground.mp4" },
     { "source": "/her.jpg", "destination": "/public/her.jpg" },
-    { "source": "/gift-preview.png", "destination": "/public/gift-preview.png" },
     { "source": "/newcardbackground.png", "destination": "/public/newcardbackground.png" },
     { "source": "/newbackground.png", "destination": "/public/newbackground.png" },
     { "source": "/cardbackground.jpg", "destination": "/public/cardbackground.jpg" },

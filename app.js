@@ -478,31 +478,100 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 4. Retro Pixel Camera Snap Interactivity
+  // 4. Retro Pixel Camera & Photo Gallery Controller
   // ------------------------------------------------------------------------
   const cameraTrigger = document.getElementById('camera-trigger');
   const cameraFlash = document.getElementById('camera-flash');
+  const galleryModal = document.getElementById('gallery-modal');
+  const galleryCloseMac = document.getElementById('gallery-close-mac');
+  const galleryCloseIos = document.getElementById('gallery-close-ios');
+  const galleryGrid = document.getElementById('gallery-grid');
+  const galleryEmptyState = document.getElementById('gallery-empty-state');
 
-  if (cameraTrigger && cameraFlash) {
-    function snapPhoto() {
+  async function loadAndOpenGallery() {
+    // Flash effect animation
+    if (cameraFlash) {
       cameraFlash.classList.remove('flash-active');
       void cameraFlash.offsetWidth; // Force reflow
       cameraFlash.classList.add('flash-active');
-
       setTimeout(() => {
         cameraFlash.classList.remove('flash-active');
-      }, 250);
+      }, 200);
     }
 
-    cameraTrigger.addEventListener('click', snapPhoto);
+    // Fetch images from /public/gallery via API
+    let images = [];
+    try {
+      const res = await fetch('/api/gallery');
+      if (res.ok) {
+        images = await res.json();
+      }
+    } catch (err) {
+      images = [];
+    }
+
+    if (galleryGrid && galleryEmptyState) {
+      if (images && images.length > 0) {
+        galleryGrid.innerHTML = '';
+        images.forEach(src => {
+          const item = document.createElement('div');
+          item.className = 'gallery-photo-item';
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = 'Gallery Memory';
+          img.className = 'gallery-photo-img';
+          item.appendChild(img);
+          galleryGrid.appendChild(item);
+        });
+        galleryGrid.style.display = 'grid';
+        galleryEmptyState.style.display = 'none';
+      } else {
+        galleryGrid.style.display = 'none';
+        galleryEmptyState.style.display = 'flex';
+      }
+    }
+
+    if (galleryModal) {
+      galleryModal.classList.add('active');
+      galleryModal.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  function closeGallery() {
+    if (galleryModal) {
+      galleryModal.classList.remove('active');
+      galleryModal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  if (cameraTrigger) {
+    cameraTrigger.addEventListener('click', loadAndOpenGallery);
     cameraTrigger.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        snapPhoto();
+        loadAndOpenGallery();
       }
     });
   }
 
+  if (galleryCloseMac) galleryCloseMac.addEventListener('click', closeGallery);
+  if (galleryCloseIos) galleryCloseIos.addEventListener('click', closeGallery);
+
+  if (galleryModal) {
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) {
+        closeGallery();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && galleryModal && galleryModal.classList.contains('active')) {
+      closeGallery();
+    }
+  });
+
 });
+
 
 

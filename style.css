@@ -285,6 +285,24 @@ body.page-two-active {
   z-index: 0;
 }
 
+.video-bg-desktop {
+  display: block;
+}
+
+.video-bg-phone {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .video-bg-desktop {
+    display: none;
+  }
+
+  .video-bg-phone {
+    display: block;
+  }
+}
+
 .apology-card {
   position: relative;
   z-index: 10;

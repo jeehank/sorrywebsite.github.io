@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Gift From Me To You</title>
+  <meta name="description" content="A special interactive romantic gift and apology website with beautiful flower transitions, memories, and music.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="root">
+    
+    <!-- 1. Passcode Screen (Screen 1) -->
+    <section id="passcode-screen" class="screen active">
+      <div class="passcode-container">
+        <!-- Heart Icon -->
+        <div id="heart-icon-wrapper" class="heart-wrapper">
+          <svg width="64" height="64" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 28.2C15.6 28.2 15.2 28.06 14.9 27.8C10.3 23.9 6.3 20.2 3.5 16.4C1.4 13.5 0.4 10.8 0.4 8.1C0.4 3.6 3.9 0 8.3 0C11 0 13.5 1.4 16 4C18.5 1.4 21 0 23.7 0C28.1 0 31.6 3.6 31.6 8.1C31.6 10.8 30.6 13.5 28.5 16.4C25.7 20.2 21.7 23.9 17.1 27.8C16.8 28.06 16.4 28.2 16 28.2Z" fill="#c23b58"/>
+          </svg>
+        </div>
+        
+        <!-- Keypad Dots -->
+        <div class="dots-wrapper" aria-label="passcode entry progress">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+        <!-- Keypad Buttons -->
+        <div class="keypad-grid">
+          <button type="button" class="key-btn" data-key="1">1</button>
+          <button type="button" class="key-btn" data-key="2">2</button>
+          <button type="button" class="key-btn" data-key="3">3</button>
+          <button type="button" class="key-btn" data-key="4">4</button>
+          <button type="button" class="key-btn" data-key="5">5</button>
+          <button type="button" class="key-btn" data-key="6">6</button>
+          <button type="button" class="key-btn" data-key="7">7</button>
+          <button type="button" class="key-btn" data-key="8">8</button>
+          <button type="button" class="key-btn" data-key="9">9</button>
+          <button type="button" class="key-btn key-action" data-key="C">C</button>
+          <button type="button" class="key-btn" data-key="0">0</button>
+          <button type="button" class="key-btn key-action" data-key="backspace">⌫</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Front Screen (Gift Box Screen - Screen 2) -->
+    <section id="gift-screen" class="screen">
+      <div id="gift-box-trigger" class="gift-container" role="button" tabindex="0" aria-label="Tap gift to open surprise">
+        <!-- Red Sketchy Hand-Drawn Gift Box -->
+        <div class="gift-box-sketch">
+          <svg width="220" height="220" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="182" rx="55" ry="7" fill="rgba(160, 40, 55, 0.18)" filter="blur(3px)"></ellipse>
+            <!-- Box Body -->
+            <rect x="52" y="90" width="96" height="80" rx="3" fill="#fdfaf5" stroke="#b82e42" stroke-width="3.2" stroke-linejoin="round"></rect>
+            <g stroke="#d94b5e" stroke-width="1.8" stroke-linecap="round" opacity="0.85">
+              <line x1="58" y1="100" x2="80" y2="165"></line>
+              <line x1="68" y1="96" x2="92" y2="168"></line>
+              <line x1="78" y1="96" x2="104" y2="168"></line>
+              <line x1="88" y1="96" x2="114" y2="168"></line>
+              <line x1="98" y1="96" x2="124" y2="168"></line>
+              <line x1="108" y1="96" x2="134" y2="168"></line>
+              <line x1="118" y1="96" x2="142" y2="165"></line>
+            </g>
+            <rect x="91" y="90" width="18" height="80" fill="#c93448" opacity="0.9"></rect>
+            <line x1="91" y1="90" x2="91" y2="170" stroke="#941f30" stroke-width="2"></line>
+            <line x1="109" y1="90" x2="109" y2="170" stroke="#941f30" stroke-width="2"></line>
+
+            <!-- Box Lid -->
+            <rect x="44" y="65" width="112" height="28" rx="4" fill="#fdfaf5" stroke="#b82e42" stroke-width="3.2" stroke-linejoin="round"></rect>
+            <g stroke="#d94b5e" stroke-width="1.8" stroke-linecap="round" opacity="0.85">
+              <line x1="50" y1="70" x2="62" y2="88"></line>
+              <line x1="60" y1="70" x2="72" y2="88"></line>
+              <line x1="70" y1="70" x2="82" y2="88"></line>
+              <line x1="80" y1="70" x2="92" y2="88"></line>
+              <line x1="90" y1="70" x2="102" y2="88"></line>
+              <line x1="100" y1="70" x2="112" y2="88"></line>
+              <line x1="110" y1="70" x2="122" y2="88"></line>
+              <line x1="120" y1="70" x2="132" y2="88"></line>
+              <line x1="130" y1="70" x2="142" y2="88"></line>
+            </g>
+            <rect x="91" y="65" width="18" height="28" fill="#c93448" opacity="0.9"></rect>
+            <line x1="91" y1="65" x2="91" y2="93" stroke="#941f30" stroke-width="2"></line>
+            <line x1="109" y1="65" x2="109" y2="93" stroke="#941f30" stroke-width="2"></line>
+
+            <!-- Bow Loops -->
+            <path d="M 100 66 C 85 40 50 35 55 52 C 60 65 92 64 100 66 Z" fill="#d4394f" stroke="#941f30" stroke-width="2.5" stroke-linejoin="round"></path>
+            <path d="M 96 64 C 82 46 62 43 65 53 C 68 60 88 61 96 64 Z" fill="#e85d70" opacity="0.75"></path>
+            <path d="M 100 66 C 115 40 150 35 145 52 C 140 65 108 64 100 66 Z" fill="#d4394f" stroke="#941f30" stroke-width="2.5" stroke-linejoin="round"></path>
+            <path d="M 104 64 C 118 46 138 43 135 53 C 132 60 112 61 104 64 Z" fill="#e85d70" opacity="0.75"></path>
+            <ellipse cx="100" cy="66" rx="8" ry="7" fill="#b02538" stroke="#781422" stroke-width="2"></ellipse>
+            <path d="M 96 69 C 90 78 80 90 76 96 C 74 99 82 98 86 94 C 92 88 98 75 99 69 Z" fill="#b02538"></path>
+            <path d="M 104 69 C 110 78 120 90 124 96 C 126 99 118 98 114 94 C 108 88 102 75 101 69 Z" fill="#b02538"></path>
+          </svg>
+        </div>
+
+        <!-- Front Screen Text Customized Exactly as Requested -->
+        <h1 class="gift-title">a gift from me to you</h1>
+        <p class="gift-subtitle">(tap to open)</p>
+      </div>
+    </section>
+
+    <!-- 3. Flower Transition Overlay -->
+    <div id="flower-transition-overlay" class="flower-overlay"></div>
+
+    <!-- 4. Page Two (Unlocked Content - Screen 3) -->
+    <main id="page-two" class="screen">
+      
+      <!-- Section A: "I'm sorry" Spotlight & Her Photo Feature -->
+      <section class="apology-spotlight-section">
+        <div class="apology-card">
+          <!-- Her Photo in Cute Frame -->
+          <div class="her-photo-container">
+            <div class="cute-photo-frame">
+              <div class="pin-badge">❤️</div>
+              <img src="/her.jpg" alt="My Sweetheart" class="her-photo">
+              <div class="frame-sparkles">
+                <span class="sparkle s1">✨</span>
+                <span class="sparkle s2">🌸</span>
+                <span class="sparkle s3">💖</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- "I'm sorry" Handwritten Text & Note -->
+          <div class="apology-text-wrapper">
+            <h2 class="sorry-title">I'm sorry</h2>
+            <p class="sorry-subtitle">from the very bottom of my heart</p>
+            <p class="sorry-message">
+              I am so truly sorry for everything. You mean the entire world to me, and my days are never complete without your smile. Please accept this little digital gift as a symbol of how much I cherish you.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section B: Hero Section with Scattered Polaroid Album -->
+      <section class="hero-section">
+        <div class="polaroid-scatter-bg" id="polaroid-bg"></div>
+        <div class="hero-vignette"></div>
+        <div class="hero-content">
+          <h2 class="hero-title">I love you so much, baby</h2>
+          <div class="scroll-indicator">SCROLL ↓</div>
+        </div>
+      </section>
+
+      <!-- Section C: Letter Section -->
+      <section class="letter-section">
+        <div class="letter-backdrop"></div>
+        <div class="letter-card">
+          <h3 class="letter-heading">A letter for you</h3>
+          <div class="letter-body">
+            <p>My Dearest,</p>
+            <p>I am writing this because words sometimes catch in my throat when I look at you, overwhelmed by how much you mean to me. Please keep this little note as a token of my heart—a small reminder of a love that belongs entirely to you, even when we are apart.</p>
+            <p>Lately, the distance between us feels a little heavier, and I find myself yearning for you in the quietest moments of the day. I miss the simple warmth of your hand in mine, the soft sound of your laughter, and the way the world just makes sense whenever you are near.</p>
+            <p>You are my peace, my constant joy, and the brightest part of my life. No matter where we are or how long the days feel before I can hold you again, please never forget how deeply, truly, and completely you are loved.</p>
+            <p>You have my whole heart, today and for all the days to come.</p>
+            <p class="letter-sign">Forever and always yours,<br>With all my love</p>
+          </div>
+          <div class="letter-subtext">Keep scrolling</div>
+        </div>
+      </section>
+
+      <!-- Section D: Songs Section -->
+      <section class="songs-section">
+        <div class="songs-content">
+          <h2 class="songs-title">Our Top Songs</h2>
+          <p class="songs-subtitle">the soundtrack of us</p>
+
+          <div class="songs-grid">
+            <!-- Song Card 1 -->
+            <div class="song-card">
+              <div class="song-art art-1">🎵</div>
+              <div class="song-info">
+                <h4 class="song-name">Golden Hour</h4>
+                <p class="song-artist">JVKE</p>
+              </div>
+              <button type="button" class="play-btn" data-song="1" aria-label="Play song">▶</button>
+            </div>
+            <!-- Song Card 2 -->
+            <div class="song-card">
+              <div class="song-art art-2">💖</div>
+              <div class="song-info">
+                <h4 class="song-name">Until I Found You</h4>
+                <p class="song-artist">Stephen Sanchez</p>
+              </div>
+              <button type="button" class="play-btn" data-song="2" aria-label="Play song">▶</button>
+            </div>
+            <!-- Song Card 3 -->
+            <div class="song-card">
+              <div class="song-art art-3">✨</div>
+              <div class="song-info">
+                <h4 class="song-name">Lover</h4>
+                <p class="song-artist">Taylor Swift</p>
+              </div>
+              <button type="button" class="play-btn" data-song="3" aria-label="Play song">▶</button>
+            </div>
+            <!-- Song Card 4 -->
+            <div class="song-card">
+              <div class="song-art art-4">🌹</div>
+              <div class="song-info">
+                <h4 class="song-name">Perfect</h4>
+                <p class="song-artist">Ed Sheeran</p>
+              </div>
+              <button type="button" class="play-btn" data-song="4" aria-label="Play song">▶</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section E: Final Section -->
+      <section class="final-section">
+        <div class="final-heart-bg"></div>
+        <div class="final-content">
+          <h2 id="typewriter-text" class="final-title"></h2>
+        </div>
+        <button id="back-to-top-btn" type="button" class="fab-btn">↑ Go to the start</button>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     giftBoxTrigger.classList.add('locked-shake');
 
     if (giftLockMsg) {
-      giftLockMsg.textContent = '🔒 Shh! Locked until 2:30 PM on 31st July 2026!';
+      giftLockMsg.textContent = 'nuh uh bro';
       giftLockMsg.classList.add('visible');
 
       if (warningTimeout) clearTimeout(warningTimeout);

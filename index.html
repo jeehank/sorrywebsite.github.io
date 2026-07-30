@@ -127,6 +127,14 @@
     <!-- 3. Page Two (Unlocked Content) -->
     <main id="page-two" class="screen">
 
+      <!-- Hanging Spider-Men (Top Left & Top Right falling down after flower transition) -->
+      <div class="spiderman-hanging top-left-spidey" id="spidey-left">
+        <img src="/spiderman2.png" alt="Hanging Spider-Man" class="spidey-hanging-img">
+      </div>
+      <div class="spiderman-hanging top-right-spidey" id="spidey-right">
+        <img src="/spiderman2.png" alt="Hanging Spider-Man" class="spidey-hanging-img">
+      </div>
+
       <!-- "I'm sorry" Spotlight & Her Photo Feature -->
       <section class="apology-spotlight-section">
         <!-- Video Background -->
@@ -257,15 +265,25 @@
       <section class="camera-feature-section" id="camera-section">
         <div class="pixel-camera-container">
           <div class="camera-flash-overlay" id="camera-flash"></div>
+          
+          <!-- Spider-Man 1 Sticking to the Left of the Camera -->
+          <div class="spiderman-camera-sticker">
+            <img src="/spiderman1.png" alt="Spider-Man sticking to camera" class="spidey-camera-img">
+          </div>
+
           <div class="camera-wrapper" id="camera-trigger" role="button" tabindex="0" aria-label="Click camera to view photos">
             <img src="/pixel_camera.png" alt="Retro Pixel Camera" class="pixel-camera-img">
             <span class="camera-lens-glint"></span>
           </div>
         </div>
+
+        <!-- Typewriter Text Below Camera -->
+        <div class="spiderman-typewriter-wrapper">
+          <p class="spiderman-typewriter-text"><span id="spiderman-typed-text"></span><span class="spiderman-cursor">|</span></p>
+        </div>
       </section>
 
     </main>
-  </div>
 
   <!-- 4. Photo Gallery Modal (Macbook on PC / iPhone on Mobile) -->
   <div id="gallery-modal" class="gallery-modal-overlay" aria-hidden="true">
@@ -300,7 +318,7 @@
       <!-- Gallery Body Wrapper (Sidebar + Main Grid) -->
       <div class="gallery-body">
 
-        <!-- macOS Sidebar (Desktop View) -->
+        <!-- macOS Sidebar (Desktop View - ONLY Library kept) -->
         <aside class="mac-sidebar">
           <div class="sidebar-section-title">Photos</div>
           <ul class="sidebar-menu">
@@ -308,29 +326,8 @@
               <span class="sidebar-icon">🖼️</span>
               <span>Library</span>
             </li>
-            <li class="sidebar-item">
-              <span class="sidebar-icon">☀️</span>
-              <span>Memories</span>
-            </li>
-            <li class="sidebar-item">
-              <span class="sidebar-icon">⭐</span>
-              <span>Favorites</span>
-            </li>
-            <li class="sidebar-item">
-              <span class="sidebar-icon">📁</span>
-              <span>Recents</span>
-            </li>
           </ul>
-          <div class="sidebar-section-title" style="margin-top: 1.5rem;">Albums</div>
-          <ul class="sidebar-menu">
-            <li class="sidebar-item">
-              <span class="sidebar-icon">👥</span>
-              <span>Shared</span>
-            </li>
-            <li class="sidebar-item">
-              <span class="sidebar-icon">📍</span>
-              <span>Places</span>
-            </li>
+        </aside>          </li>
           </ul>
         </aside>
 

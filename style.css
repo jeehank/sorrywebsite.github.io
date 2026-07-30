@@ -1194,8 +1194,108 @@ body.page-two-active {
   outline: none;
 }
 
-.camera-wrapper:hover {
-  transform: scale(1.08) rotate(-2deg);
+/* ==========================================================================
+   Spider-Man Features & Falling Animations
+   ========================================================================== */
+.spiderman-hanging {
+  position: absolute;
+  top: 0;
+  z-index: 45;
+  pointer-events: none;
+  width: 140px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  transform: translateY(-130%);
+  transition: transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.spiderman-hanging.top-left-spidey {
+  left: 24px;
+}
+
+.spiderman-hanging.top-right-spidey {
+  right: 24px;
+}
+
+.spidey-hanging-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Fall down animation trigger class */
+#page-two.active .spiderman-hanging {
+  transform: translateY(0);
+}
+
+/* Spider-Man Sticking to Left of Camera */
+.spiderman-camera-sticker {
+  position: absolute;
+  left: -130px;
+  bottom: -10px;
+  z-index: 15;
+  width: 170px;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.6));
+  animation: spidey-float 3.5s ease-in-out infinite;
+}
+
+.spidey-camera-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes spidey-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-2deg); }
+}
+
+/* Typewriter Text Below Camera */
+.spiderman-typewriter-wrapper {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+.spiderman-typewriter-text {
+  font-family: var(--font-handwritten);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-gold-cream);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 207, 214, 0.3);
+}
+
+.spiderman-cursor {
+  display: inline-block;
+  font-family: monospace;
+  font-weight: 400;
+  color: #ff5a5a;
+  animation: cursor-blink 0.8s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes cursor-blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Responsive adjustments for Spider-Man assets */
+@media (max-width: 768px) {
+  .spiderman-hanging {
+    width: 95px;
+  }
+  .spiderman-hanging.top-left-spidey { left: 8px; }
+  .spiderman-hanging.top-right-spidey { right: 8px; }
+  
+  .spiderman-camera-sticker {
+    left: -65px;
+    bottom: -5px;
+    width: 110px;
+  }
+  .spiderman-typewriter-text {
+    font-size: 1.65rem;
+  }
 }
 
 /* ==========================================================================

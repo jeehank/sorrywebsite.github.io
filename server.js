@@ -21,6 +21,8 @@ const mimeTypes = {
 
 const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
+  if (reqPath === '/') reqPath = '/index.html';
+
   if (reqPath === '/api/gallery') {
     const galleryDir = path.join(ROOT_DIR, 'public', 'gallery');
     let images = [];

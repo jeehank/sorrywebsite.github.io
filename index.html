@@ -257,16 +257,120 @@
       <section class="camera-feature-section" id="camera-section">
         <div class="pixel-camera-container">
           <div class="camera-flash-overlay" id="camera-flash"></div>
-          <div class="camera-wrapper" id="camera-trigger" role="button" tabindex="0" aria-label="Click camera to take a snap">
+          <div class="camera-wrapper" id="camera-trigger" role="button" tabindex="0" aria-label="Click camera to view photos">
             <img src="/pixel_camera.png" alt="Retro Pixel Camera" class="pixel-camera-img">
             <span class="camera-lens-glint"></span>
           </div>
-          <p class="camera-caption">📸 tap the camera for a snap!</p>
         </div>
       </section>
 
     </main>
   </div>
+
+  <!-- 4. Photo Gallery Modal (Macbook on PC / iPhone on Mobile) -->
+  <div id="gallery-modal" class="gallery-modal-overlay" aria-hidden="true">
+    <div class="gallery-modal-content">
+
+      <!-- macOS Window Bar (Desktop View) -->
+      <div class="mac-title-bar">
+        <div class="mac-window-controls">
+          <button class="mac-btn mac-close" id="gallery-close-mac" aria-label="Close Gallery"></button>
+          <button class="mac-btn mac-minimize" aria-label="Minimize"></button>
+          <button class="mac-btn mac-expand" aria-label="Expand"></button>
+        </div>
+        <div class="mac-title">Photos</div>
+        <div class="mac-search-bar">
+          <span class="mac-search-icon">🔍</span>
+          <span class="mac-search-text">Search</span>
+        </div>
+      </div>
+
+      <!-- iOS Header Bar (Mobile View) -->
+      <div class="ios-header-bar">
+        <button class="ios-back-btn" id="gallery-close-ios" aria-label="Back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+          <span>Back</span>
+        </button>
+        <h3 class="ios-title">Library</h3>
+        <button class="ios-select-btn">Select</button>
+      </div>
+
+      <!-- Gallery Body Wrapper (Sidebar + Main Grid) -->
+      <div class="gallery-body">
+
+        <!-- macOS Sidebar (Desktop View) -->
+        <aside class="mac-sidebar">
+          <div class="sidebar-section-title">Photos</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-item active">
+              <span class="sidebar-icon">🖼️</span>
+              <span>Library</span>
+            </li>
+            <li class="sidebar-item">
+              <span class="sidebar-icon">☀️</span>
+              <span>Memories</span>
+            </li>
+            <li class="sidebar-item">
+              <span class="sidebar-icon">⭐</span>
+              <span>Favorites</span>
+            </li>
+            <li class="sidebar-item">
+              <span class="sidebar-icon">📁</span>
+              <span>Recents</span>
+            </li>
+          </ul>
+          <div class="sidebar-section-title" style="margin-top: 1.5rem;">Albums</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-item">
+              <span class="sidebar-icon">👥</span>
+              <span>Shared</span>
+            </li>
+            <li class="sidebar-item">
+              <span class="sidebar-icon">📍</span>
+              <span>Places</span>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Main Gallery Content Grid / Empty State -->
+        <main class="gallery-main-content">
+          <div id="gallery-grid" class="gallery-grid"></div>
+
+          <!-- Empty State Message -->
+          <div id="gallery-empty-state" class="gallery-empty-state">
+            <div class="empty-icon-wrapper">
+              <span class="empty-icon">📷</span>
+            </div>
+            <p class="empty-text">hey we dont have any irl memories rn but hopefulyl we do soon</p>
+          </div>
+        </main>
+
+      </div> <!-- .gallery-body -->
+
+      <!-- iOS Bottom Tab Bar (Mobile View) -->
+      <nav class="ios-tab-bar">
+        <div class="tab-item active">
+          <span class="tab-icon">🖼️</span>
+          <span class="tab-label">Library</span>
+        </div>
+        <div class="tab-item">
+          <span class="tab-icon">☀️</span>
+          <span class="tab-label">For You</span>
+        </div>
+        <div class="tab-item">
+          <span class="tab-icon">📁</span>
+          <span class="tab-label">Albums</span>
+        </div>
+        <div class="tab-item">
+          <span class="tab-icon">🔍</span>
+          <span class="tab-label">Search</span>
+        </div>
+      </nav>
+
+    </div> <!-- .gallery-modal-content -->
+  </div> <!-- #gallery-modal -->
 
   <script src="app.js"></script>
 </body>

@@ -21,7 +21,21 @@ const mimeTypes = {
 
 const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
-  if (reqPath === '/') reqPath = '/index.html';
+  if (reqPath === '/api/gallery') {
+    const galleryDir = path.join(ROOT_DIR, 'public', 'gallery');
+    let images = [];
+    if (fs.existsSync(galleryDir)) {
+      try {
+        const files = fs.readdirSync(galleryDir);
+        images = files.filter(f => /\.(jpg|jpeg|png|gif|webp)$/i.test(f)).map(f => '/gallery/' + f);
+      } catch (e) {
+        images = [];
+      }
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+    res.end(JSON.stringify(images));
+    return;
+  }
 
   let filePath = path.join(ROOT_DIR, reqPath);
   if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {

@@ -271,7 +271,7 @@ body.page-two-active {
   align-items: center;
   justify-content: center;
   padding: 4rem 1.5rem 2rem;
-  background: radial-gradient(circle at 50% 30%, rgba(140, 20, 35, 0.7) 0%, rgba(61, 0, 0, 0.95) 75%);
+  background: url('/background.jpg') center center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -286,11 +286,12 @@ body.page-two-active {
   max-width: 960px;
   width: 100%;
   padding: 3rem 2.5rem;
-  background: rgba(255, 255, 255, 0.07);
+  background: url('/cardbackground.jpg') center center / cover no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 28px;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(4px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {

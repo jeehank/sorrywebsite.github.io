@@ -928,3 +928,284 @@ body.page-two-active {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
   50% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
 }
+
+/* ==========================================================================
+   Certificate Section (Lifetime Bestie Award)
+   ========================================================================== */
+.certificate-spotlight-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.certificate-outer-frame {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f8c4d8 0px,
+    #f8c4d8 20px,
+    #ffffff 20px,
+    #ffffff 40px,
+    #fff3b8 40px,
+    #fff3b8 60px,
+    #ffffff 60px,
+    #ffffff 80px
+  );
+  border-radius: 20px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Lilac Stars in Top Corners */
+.cert-corner-star {
+  position: absolute;
+  font-size: 1.6rem;
+  color: #a270db;
+  user-select: none;
+  z-index: 5;
+  filter: drop-shadow(0 2px 4px rgba(126, 87, 194, 0.35));
+}
+
+.cert-corner-star.top-left {
+  top: 16px;
+  left: 20px;
+}
+
+.cert-corner-star.top-right {
+  top: 16px;
+  right: 20px;
+}
+
+/* Red Chevron Arrow on Right Edge */
+.cert-nav-arrow {
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.25 ease;
+}
+
+.cert-nav-arrow:hover {
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* Cool Peeking Cat on Left Edge */
+.peeking-cat-wrapper {
+  position: absolute;
+  left: -90px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 220px;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
+}
+
+.peeking-cat-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+/* Scalloped Pink Outer Border Frame */
+.scalloped-pink-border {
+  position: relative;
+  width: 100%;
+  background-color: #f48fb1;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scallop edge effect */
+.scalloped-pink-border::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 20px;
+  background: radial-gradient(circle at 10px 10px, transparent 8px, #f48fb1 8.5px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Main Inner White Certificate Canvas */
+.certificate-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background-color: #fdfbf7;
+  border: 1px solid rgba(220, 195, 175, 0.45);
+  border-radius: 4px;
+  padding: 3.5rem 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06), inset 0 0 50px rgba(253, 245, 230, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title: Lifetime Bestie Award */
+.cert-title {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 700;
+  color: #7b1d28;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.9), 2px 3px 6px rgba(120, 20, 30, 0.18);
+}
+
+/* Subtitle */
+.cert-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #4a3a3a;
+  margin-top: 0.85rem;
+  margin-bottom: 0.35rem;
+  font-style: italic;
+}
+
+/* Recipient Name Wrapper */
+.cert-name-wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.4rem 0 1rem;
+  width: 100%;
+  max-width: 540px;
+}
+
+.cert-name {
+  font-family: var(--font-script);
+  font-size: 4.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  padding: 0 0.5rem;
+}
+
+.cert-name-underline {
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, #4a3a3a 15%, #4a3a3a 85%, transparent 100%);
+  margin-top: 1px;
+}
+
+/* Certificate Message Body */
+.cert-message {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: #3b2d2d;
+  max-width: 640px;
+  margin: 1.25rem auto 2.25rem;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+/* Ribbon Badge at Bottom Center */
+.cert-ribbon-badge {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 6px 14px rgba(184, 46, 66, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.cert-ribbon-badge:hover {
+  transform: scale(1.08) rotate(2deg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .certificate-outer-frame {
+    padding: 1.5rem;
+  }
+  .peeking-cat-wrapper {
+    left: -60px;
+    width: 170px;
+  }
+  .cert-title {
+    font-size: 3rem;
+  }
+  .cert-name {
+    font-size: 3.4rem;
+  }
+  .cert-message {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .certificate-spotlight-section {
+    padding: 2rem 0.75rem;
+  }
+  .certificate-outer-frame {
+    padding: 1rem;
+    border-radius: 14px;
+    flex-direction: column;
+  }
+  .peeking-cat-wrapper {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 140px;
+    margin: 0 auto -25px 0px;
+    align-self: flex-start;
+  }
+  .scalloped-pink-border {
+    padding: 1rem;
+  }
+  .certificate-card {
+    padding: 2rem 1.25rem 1.75rem;
+  }
+  .cert-title {
+    font-size: 2.2rem;
+  }
+  .cert-name {
+    font-size: 2.5rem;
+  }
+  .cert-subtitle {
+    font-size: 1rem;
+  }
+  .cert-message {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+  .cert-nav-arrow {
+    right: -8px;
+    width: 36px;
+    height: 36px;
+  }
+}
+

@@ -5,7 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A gift from me to toxic lallu</title>
-  <meta name="description" content="">
+  <meta name="description" content="A special surprise for you! 🎁">
+
+  <!-- Open Graph / Social Media Preview Card Meta Tags (WhatsApp, iMessage, Instagram, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="A gift from me to you 🎁">
+  <meta property="og:description" content="A special surprise for you! Tap to open.">
+  <meta property="og:image" content="/gift-preview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter / X Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A gift from me to you 🎁">
+  <meta name="twitter:description" content="A special surprise for you! Tap to open.">
+  <meta name="twitter:image" content="/gift-preview.png">
+
+  <!-- Favicon / Icon -->
+  <link rel="icon" type="image/png" href="/gift-preview.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +36,9 @@
 </head>
 
 <body>
+  <!-- Hidden Gift Preview for Scrapers -->
+  <img src="/gift-preview.png" alt="Gift Box Preview" style="display:none; position:absolute; width:1px; height:1px;">
+
   <div id="root">
 
     <!-- 1. Front Screen (Gift Box Screen) -->
@@ -137,7 +158,7 @@
           <div class="her-photo-container">
             <div class="cute-photo-frame">
               <div class="pin-badge">😼</div>
-              <img src="/her.jpg" alt="My Sweetheart" class="her-photo">
+              <img data-src="/her.jpg" src="/gift-preview.png" alt="My Sweetheart" class="her-photo" id="her-photo">
               <div class="frame-sparkles">
                 <span class="sparkle s1">😛</span>
                 <span class="sparkle s2">😎</span>

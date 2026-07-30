@@ -300,6 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
           giftScreen.classList.remove('active');
           pageTwo.classList.add('active');
           document.body.classList.add('page-two-active');
+
+          const herPhoto = document.getElementById('her-photo');
+          if (herPhoto && herPhoto.dataset.src) {
+            herPhoto.src = herPhoto.dataset.src;
+          }
+
           initScratchCard();
 
           requestAnimationFrame(() => {

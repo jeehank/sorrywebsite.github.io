@@ -571,7 +571,75 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ------------------------------------------------------------------------
+  // 5. Spider-Man Slide-Down Animation (After Flower Transition)
+  // ------------------------------------------------------------------------
+  function triggerSpideyFall() {
+    const spideyLeft = document.getElementById('spidey-left');
+    const spideyRight = document.getElementById('spidey-right');
+    if (spideyLeft) spideyLeft.classList.add('spidey-fallen');
+    if (spideyRight) {
+      setTimeout(() => spideyRight.classList.add('spidey-fallen'), 400);
+    }
+  }
+
+  // Hook into page-two becoming active (already done in flower transition)
+  // We observe page-two.active class addition
+  const pageTwoObserver = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.type === 'attributes' && m.attributeName === 'class') {
+        if (pageTwo && pageTwo.classList.contains('active')) {
+          setTimeout(triggerSpideyFall, 800);
+          pageTwoObserver.disconnect();
+        }
+      }
+    }
+  });
+  if (pageTwo) {
+    pageTwoObserver.observe(pageTwo, { attributes: true });
+  }
+
+  // ------------------------------------------------------------------------
+  // 6. Typewriter Animation: "Now go finish spiderman fas fas"
+  // ------------------------------------------------------------------------
+  const typedTextEl = document.getElementById('spiderman-typed-text');
+  const typewriterPhrase = 'Now go finish spiderman fas fas';
+  let typewriterStarted = false;
+
+  function startTypewriter() {
+    if (typewriterStarted || !typedTextEl) return;
+    typewriterStarted = true;
+    let i = 0;
+    function typeChar() {
+      if (i < typewriterPhrase.length) {
+        typedTextEl.textContent += typewriterPhrase[i];
+        i++;
+        setTimeout(typeChar, 65 + Math.random() * 45);
+      }
+    }
+    typeChar();
+  }
+
+  // ------------------------------------------------------------------------
+  // 7. IntersectionObserver for Scroll Fade-In Animations
+  // ------------------------------------------------------------------------
+  const fadeElements = document.querySelectorAll('.scroll-fade-in');
+  if (fadeElements.length > 0 && 'IntersectionObserver' in window) {
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+
+          // If camera section becomes visible, start typewriter
+          if (entry.target.id === 'camera-section') {
+            setTimeout(startTypewriter, 600);
+          }
+        }
+      });
+    }, { threshold: 0.15 });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+  }
+
 });
-
-
-

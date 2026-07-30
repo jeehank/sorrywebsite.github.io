@@ -477,5 +477,32 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initScratchCard, 200);
   }
 
+  // ------------------------------------------------------------------------
+  // 4. Retro Pixel Camera Snap Interactivity
+  // ------------------------------------------------------------------------
+  const cameraTrigger = document.getElementById('camera-trigger');
+  const cameraFlash = document.getElementById('camera-flash');
+
+  if (cameraTrigger && cameraFlash) {
+    function snapPhoto() {
+      cameraFlash.classList.remove('flash-active');
+      void cameraFlash.offsetWidth; // Force reflow
+      cameraFlash.classList.add('flash-active');
+
+      setTimeout(() => {
+        cameraFlash.classList.remove('flash-active');
+      }, 250);
+    }
+
+    cameraTrigger.addEventListener('click', snapPhoto);
+    cameraTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        snapPhoto();
+      }
+    });
+  }
+
 });
+
 

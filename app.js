@@ -5,31 +5,113 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // State Variables
+  // State Variables & Countdown Target
   // ------------------------------------------------------------------------
   let isTransitioning = false;
+
+  // Target: 2:30 PM on July 31, 2026 IST (UTC+5:30)
+  const TARGET_TIME = new Date('2026-07-31T14:30:00+05:30').getTime();
+  let isUnlocked = false;
+  let warningTimeout = null;
 
   // DOM Elements
   const giftScreen = document.getElementById('gift-screen');
   const pageTwo = document.getElementById('page-two');
   const giftBoxTrigger = document.getElementById('gift-box-trigger');
   const flowerOverlay = document.getElementById('flower-transition-overlay');
+  const giftSubtitle = document.getElementById('gift-subtitle');
+  const giftLockMsg = document.getElementById('gift-lock-msg');
+
+  const daysEl = document.getElementById('timer-days');
+  const hoursEl = document.getElementById('timer-hours');
+  const minsEl = document.getElementById('timer-mins');
+  const secsEl = document.getElementById('timer-secs');
+  const targetNoteEl = document.querySelector('.countdown-target-note');
 
   // ------------------------------------------------------------------------
-  // 1. Gift Box Trigger -> Flower Transition
+  // 0. Countdown Timer Engine
   // ------------------------------------------------------------------------
-  giftBoxTrigger.addEventListener('click', () => {
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = TARGET_TIME - now;
+
+    if (diff <= 0) {
+      isUnlocked = true;
+      if (daysEl) daysEl.textContent = '00';
+      if (hoursEl) hoursEl.textContent = '00';
+      if (minsEl) minsEl.textContent = '00';
+      if (secsEl) secsEl.textContent = '00';
+
+      if (giftSubtitle) giftSubtitle.textContent = '(tap to open surprise!)';
+      if (targetNoteEl) targetNoteEl.textContent = 'Gift is Unlocked! 🎉';
+      return;
+    }
+
+    isUnlocked = false;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+    if (minsEl) minsEl.textContent = String(mins).padStart(2, '0');
+    if (secsEl) secsEl.textContent = String(secs).padStart(2, '0');
+
+    if (giftSubtitle) giftSubtitle.textContent = '(locked until 2:30 PM, 31/7/26)';
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  function showLockNotice() {
+    if (!giftBoxTrigger) return;
+    giftBoxTrigger.classList.remove('locked-shake');
+    // Force reflow
+    void giftBoxTrigger.offsetWidth;
+    giftBoxTrigger.classList.add('locked-shake');
+
+    if (giftLockMsg) {
+      giftLockMsg.textContent = '🔒 Shh! Locked until 2:30 PM on 31st July 2026!';
+      giftLockMsg.classList.add('visible');
+
+      if (warningTimeout) clearTimeout(warningTimeout);
+      warningTimeout = setTimeout(() => {
+        giftLockMsg.classList.remove('visible');
+      }, 3500);
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 1. Gift Box Trigger -> Flower Transition (With Lock & Testing Bypass)
+  // ------------------------------------------------------------------------
+  function tryOpenGift(e) {
     if (isTransitioning) return;
+
+    // Check if CTRL+SHIFT was held down during click/keypress for testing bypass
+    const isBypass = Boolean(e && e.ctrlKey && e.shiftKey);
+
+    if (!isUnlocked && !isBypass) {
+      showLockNotice();
+      return;
+    }
+
     isTransitioning = true;
     startFlowerTransition();
-  });
+  }
 
-  giftBoxTrigger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      giftBoxTrigger.click();
-    }
-  });
+  if (giftBoxTrigger) {
+    giftBoxTrigger.addEventListener('click', (e) => {
+      tryOpenGift(e);
+    });
+
+    giftBoxTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        tryOpenGift(e);
+      }
+    });
+  }
 
   // ------------------------------------------------------------------------
   // 2. Mathematical Flower Spiral Transition Engine

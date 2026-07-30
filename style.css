@@ -212,6 +212,106 @@ body.page-two-active {
   opacity: 0.9;
 }
 
+.countdown-container {
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1.5px solid rgba(184, 46, 66, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(184, 46, 66, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.timer-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+  padding: 0.4rem 0.6rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(156, 42, 59, 0.1);
+  border: 1px solid rgba(184, 46, 66, 0.15);
+}
+
+.timer-num {
+  font-family: var(--font-handwritten);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-title-red);
+  line-height: 1;
+}
+
+.timer-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #945959;
+  margin-top: 2px;
+}
+
+.timer-colon {
+  font-family: var(--font-handwritten);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-dark-red);
+  margin-top: -12px;
+  animation: colon-pulse 1.5s infinite;
+}
+
+@keyframes colon-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.countdown-target-note {
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+  color: #8c4a52;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.lock-warning-msg {
+  font-family: var(--font-handwritten);
+  font-size: 1.35rem;
+  color: #c92a42;
+  font-weight: 700;
+  min-height: 1.6rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-shadow: 0 1px 2px rgba(201, 42, 66, 0.1);
+}
+
+.lock-warning-msg.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gift-container.locked-shake {
+  animation: gift-locked-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes gift-locked-shake {
+  10%, 90% { transform: scale(1.02) translate3d(-3px, 0, 0); }
+  20%, 80% { transform: scale(1.02) translate3d(5px, 0, 0); }
+  30%, 50%, 70% { transform: scale(1.02) translate3d(-6px, 0, 0); }
+  40%, 60% { transform: scale(1.02) translate3d(6px, 0, 0); }
+}
+
 /* ==========================================================================
    3. Flower Transition Overlay
    ========================================================================== */

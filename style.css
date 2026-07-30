@@ -1010,23 +1010,42 @@ body.page-two-active {
   transform: translateY(-50%) scale(1.15);
 }
 
-/* Cool Peeking Cat on Left Edge */
+/* Peeking Cat Wrappers (Left & Right) */
 .peeking-cat-wrapper {
   position: absolute;
-  left: -90px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  width: 220px;
+  width: 190px;
   pointer-events: none;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.peeking-cat-wrapper.left-cat {
+  left: -95px;
+}
+
+.peeking-cat-wrapper.right-cat {
+  right: -95px;
 }
 
 .peeking-cat-img {
   width: 100%;
   height: auto;
   display: block;
-  mix-blend-mode: multiply;
+  border-radius: 18px;
+  border: 3.5px solid #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  object-fit: cover;
+}
+
+.cat-left-img {
+  transform: rotate(-6deg);
+}
+
+.cat-right-img {
+  transform: rotate(6deg);
 }
 
 /* Scalloped Pink Outer Border Frame */
@@ -1070,10 +1089,10 @@ body.page-two-active {
   align-items: center;
 }
 
-/* Title: Lifetime Bestie Award */
+/* Title: Coolest Person Ever Award */
 .cert-title {
   font-family: var(--font-serif);
-  font-size: 4rem;
+  font-size: 3.8rem;
   font-weight: 700;
   color: #7b1d28;
   letter-spacing: -0.01em;
@@ -1145,17 +1164,98 @@ body.page-two-active {
   transform: scale(1.08) rotate(2deg);
 }
 
+/* Retro Pixel Camera Feature Section */
+.camera-feature-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem 6rem;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.pixel-camera-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.camera-wrapper {
+  position: relative;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  outline: none;
+}
+
+.camera-wrapper:hover {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.camera-wrapper:active {
+  transform: scale(0.95);
+}
+
+.pixel-camera-img {
+  width: 240px;
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.55));
+}
+
+.camera-caption {
+  font-family: var(--font-handwritten);
+  font-size: 1.6rem;
+  color: var(--color-gold-cream);
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  animation: caption-float 2.5s ease-in-out infinite;
+}
+
+@keyframes caption-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.camera-flash-overlay {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.12s ease-out;
+}
+
+.camera-flash-overlay.flash-active {
+  opacity: 0.95;
+}
+
 /* Responsive Adjustments */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .certificate-outer-frame {
     padding: 1.5rem;
   }
   .peeking-cat-wrapper {
-    left: -60px;
-    width: 170px;
+    width: 150px;
+  }
+  .peeking-cat-wrapper.left-cat {
+    left: -65px;
+  }
+  .peeking-cat-wrapper.right-cat {
+    right: -65px;
   }
   .cert-title {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   .cert-name {
     font-size: 3.4rem;
@@ -1172,40 +1272,41 @@ body.page-two-active {
   .certificate-outer-frame {
     padding: 1rem;
     border-radius: 14px;
-    flex-direction: column;
+    margin-top: 60px;
   }
   .peeking-cat-wrapper {
-    position: relative;
-    left: auto;
-    top: auto;
+    width: 110px;
+    top: -45px;
     transform: none;
-    width: 140px;
-    margin: 0 auto -25px 0px;
-    align-self: flex-start;
+  }
+  .peeking-cat-wrapper.left-cat {
+    left: 10px;
+  }
+  .peeking-cat-wrapper.right-cat {
+    right: 10px;
   }
   .scalloped-pink-border {
     padding: 1rem;
   }
   .certificate-card {
-    padding: 2rem 1.25rem 1.75rem;
+    padding: 2rem 1rem 1.75rem;
   }
   .cert-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   .cert-name {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
   .cert-subtitle {
     font-size: 1rem;
   }
   .cert-message {
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     line-height: 1.55;
   }
-  .cert-nav-arrow {
-    right: -8px;
-    width: 36px;
-    height: 36px;
+  .pixel-camera-img {
+    width: 180px;
   }
 }
+
 

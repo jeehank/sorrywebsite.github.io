@@ -35,7 +35,7 @@ html, body {
 }
 
 body.page-two-active {
-  background-color: var(--bg-dark-maroon);
+  background-color: transparent;
 }
 
 #root {
@@ -257,7 +257,7 @@ body.page-two-active {
    ========================================================================== */
 #page-two {
   flex-direction: column;
-  background-color: var(--bg-dark-maroon);
+  background-color: transparent;
   color: var(--color-light-cream);
   position: relative;
 }
@@ -271,7 +271,7 @@ body.page-two-active {
   align-items: center;
   justify-content: center;
   padding: 4rem 1.5rem 2rem;
-  background: url('/background.jpg') center center / cover no-repeat;
+  background: url('/newbackground.png') center center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -286,7 +286,7 @@ body.page-two-active {
   max-width: 960px;
   width: 100%;
   padding: 3rem 2.5rem;
-  background: url('/cardbackground.jpg') center center / cover no-repeat;
+  background: url('/newcardbackground.png') center center / cover no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 28px;
   backdrop-filter: blur(4px);

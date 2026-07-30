@@ -1,0 +1,13 @@
+{
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
+  "rewrites": [
+    { "source": "/videobackground.mp4", "destination": "/public/videobackground.mp4" },
+    { "source": "/her.jpg", "destination": "/public/her.jpg" },
+    { "source": "/newcardbackground.png", "destination": "/public/newcardbackground.png" },
+    { "source": "/newbackground.png", "destination": "/public/newbackground.png" },
+    { "source": "/cardbackground.jpg", "destination": "/public/cardbackground.jpg" },
+    { "source": "/background.jpg", "destination": "/public/background.jpg" }
+  ]
+}

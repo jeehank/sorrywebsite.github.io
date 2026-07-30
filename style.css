@@ -27,7 +27,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: var(--font-sans);
-  background-color: var(--bg-linen);
+  background-color: #000;
   color: #333;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
@@ -266,13 +266,23 @@ body.page-two-active {
 .apology-spotlight-section {
   position: relative;
   width: 100%;
-  min-height: 85vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem 1.5rem 2rem;
-  background: url('/newbackground.png') center center / cover no-repeat;
+  background: #000;
   overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .apology-card {
